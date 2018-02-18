@@ -16,4 +16,4 @@ def rf_rfe(df):
     rfe.fit(X,y)
     features=X.columns[rfe.ranking_ == 1]
 
-    return features
+    return features.tolist()
