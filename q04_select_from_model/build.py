@@ -8,3 +8,11 @@ data = pd.read_csv('data/house_prices_multivariate.csv')
 
 
 # Your solution code here
+def select_from_model(df):
+    X=df.iloc[:,:-1]
+    y=df.iloc[:,-1:]
+    model=RandomForestClassifier()
+    model.fit(X,y)
+    sf=SelectFromModel(model,prefit=True)
+    features=X.columns[sf.get_support()==True]
+    return features.tolist()
